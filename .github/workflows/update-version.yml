@@ -7,9 +7,8 @@ name: "TechTrends - Update the version tag"
 # Does not work.
 # Could not get past issue with version always being "main"
 # I was trying to get the semver to automatically save the different tags for the version
-# According to an article I found on the internet. Having forked a project it will
-# always get the information from the forked project and not this project.
 # Spent too long trying to get this to work. Just leaving it here to show work done.
+# If you know what I am missing please educate me. Thanks in advance.
 on:
   push:
     branches:
@@ -41,12 +40,6 @@ jobs:
           # list of Docker images to use as base name for tags
           images: |
             rbriley/techtrends
-          labels: |
-            maintainer=Richard L. Briley Jr.
-            org.opencontainers.image.title=Udacity Project1
-            org.opencontainers.image.description=First poject for Udacity
-            org.opencontainers.image.vendor=None
-            org.opencontainers.image.version=v1.0.1
           # generate Docker tags based on the following events/attributes
           tags: |
             type=ref,event=branch
