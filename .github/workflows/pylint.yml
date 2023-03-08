@@ -21,4 +21,4 @@ jobs:
         if [ -f techtrends/requirements.txt ]; then pip install -r techtrends/requirements.txt; fi
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files 'project/*.py')
+        pylint $(git ls-files '*.py')

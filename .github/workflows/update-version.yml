@@ -71,8 +71,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./project
-          file: ./project/Dockerfile
+          context: .
+          file: ./Dockerfile
           platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
           # The image gets pushed with this tag.
