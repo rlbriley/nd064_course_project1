@@ -1,0 +1,13 @@
+---
+namespace: staging
+
+replicaCount: 3
+
+servicePort: "5111"
+
+resourcesRequestCpu: 300m
+resourcesRequestMem: 90Mi
+# The following two settinga are not really necessary because they match the settings in values.yaml
+resourcesLimitsCpu: 500m
+resourcesLimitsMem: 128Mi
+...

@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+name: techtrends
+description: Install udacity project1 techtrends python application.
+keywords:
+  - techtrends
+version: 1.0.0
+maintainers:
+  - name: rbriley
+    email: rlbrileyjr@gmail.com
+...

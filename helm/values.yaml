@@ -1,0 +1,30 @@
+---
+namespace: sandbox
+
+appname: techtrends
+
+imageRepository: techtrends
+imageTag: "v1.0.1"
+imagePullPolicy: IfNotPresent
+
+replicaCount: 1
+
+servicePort: "4111"
+serviceTargetPort: "3111"
+serviceType: ClusterIP
+serviceProtocol: "TCP"
+
+configMapProperties: "version: alpine"
+
+resourcesRequestCpu: 250m
+resourcesRequestMem: 64Mi
+resourcesLimitsCpu: 500m
+resourcesLimitsMem: 128Mi
+
+containerPort: "3111"
+containerProtocol: "TCP"
+
+livenessProbePath: "/healthz"
+
+readinessProbePath: "/healthz"
+...

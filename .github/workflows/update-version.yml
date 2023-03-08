@@ -1,0 +1,81 @@
+---
+name: "TechTrends - Update the version tag"
+
+# Controls when the action will run. Triggers the workflow on push request
+# events but only for the main branch
+
+# Does not work.
+# Could not get past issue with version always being "main"
+# I was trying to get the semver to automatically save the different tags for the version
+# According to an article I found on the internet. Having forked a project it will
+# always get the information from the forked project and not this project.
+# Spent too long trying to get this to work. Just leaving it here to show work done.
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*.*.*'
+  pull_request:
+    branches:
+      - 'main'
+
+# Will prevent multiple parallel runs
+concurrency: production
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  docker:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          # list of Docker images to use as base name for tags
+          images: |
+            rbriley/techtrends
+          labels: |
+            maintainer=Richard L. Briley Jr.
+            org.opencontainers.image.title=Udacity Project1
+            org.opencontainers.image.description=First poject for Udacity
+            org.opencontainers.image.vendor=None
+            org.opencontainers.image.version=v1.0.1
+          # generate Docker tags based on the following events/attributes
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to DockerHub
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DHUB_USERNAME }}
+          password: ${{ secrets.DHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: ./project
+          file: ./project/Dockerfile
+          platforms: linux/amd64
+          push: ${{ github.event_name != 'pull_request' }}
+          # The image gets pushed with this tag.
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+...
