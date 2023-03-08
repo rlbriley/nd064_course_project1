@@ -16,7 +16,7 @@ log = logging.getLogger(__name__)
 # This function connects to database with the name `database.db`
 def get_db_connection():
     global db_connection_cnt
-    connection = sqlite3.connect('techtrends/database.db')
+    connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
     db_connection_cnt += 1
     return connection
