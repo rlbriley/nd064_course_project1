@@ -1,0 +1,197 @@
+## Docker commands used to build the application
+# The docker build command
+docker build -f ./Dockerfile -t techtrends .
+
+## Docker commands used to run the application
+# The docker run command
+docker run -p 7111:3111 --detach --name techtrends techtrends
+
+## Docker commands used to get the application logs
+# The docker logs command
+$id = (docker ps | grep techtrends | awk '{print $1}')
+docker logs $id
+
+## Logs from the container running the TechTrends application
+# Logs from the Docker container
+ * Serving Flask app 'app' (lazy loading)
+WARNING:werkzeug: * Running on all addresses.
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
+DEBUG:__main__:Database contains 6 posts
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:57:11] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:57:11] "GET /static/css/main.css HTTP/1.1" 304 -
+DEBUG:__main__:Database contains 6 posts
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:57:14] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:57:14] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:__main__:Displaying post 1    with title '2020 CNCF Annual Report'
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:57:16] "GET /1 HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:57:16] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 01:57:26] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 01:57:56] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 01:58:26] "GET /healthz HTTP/1.1" 200 -
+DEBUG:__main__:metrics request successful response={"db_connection_count": 3, "post_count": 6}
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:58:32] "GET /metrics HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 01:58:56] "GET /healthz HTTP/1.1" 200 -
+DEBUG:__main__:Database contains 6 posts
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:59:20] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:59:20] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:__main__:Displaying post 1    with title '2020 CNCF Annual Report'
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:59:22] "GET /1 HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:59:22] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:__main__:Displaying post 2    with title 'KubeCon + CloudNativeCon 2021'
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:59:24] "GET /2 HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:59:24] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:__main__:Displaying post 3    with title 'Kubernetes v1.20 Release Notes'
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:59:26] "GET /3 HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:59:26] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 01:59:26] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:Displaying post 4    with title 'CNCF Cloud Native Interactive Landscape'
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:59:28] "GET /4 HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:59:28] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:__main__:Displaying post 5    with title 'CNCF Cloud Native Definition v1.0'
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:59:30] "GET /5 HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:59:30] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:__main__:Displaying post 6    with title 'Kubernetes Certification'
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:59:32] "GET /6 HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:59:32] "GET /static/css/main.css HTTP/1.1" 304 -
+DEBUG:__main__:about endpoint accessed, rendering 'about.html'
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:59:37] "GET /about HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:59:37] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:59:46] "GET /create HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 01:59:46] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 01:59:56] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:00:26] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:00:57] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:Created post 7    with title 'Docker image new post test'
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 02:01:24] "POST /create HTTP/1.1" 302 -
+DEBUG:__main__:Database contains 7 posts
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 02:01:24] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 02:01:24] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:01:27] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:Displaying post 7    with title 'Docker image new post test'
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 02:01:29] "GET /7 HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 02:01:29] "GET /static/css/main.css HTTP/1.1" 304 -
+DEBUG:__main__:Database contains 7 posts
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 02:01:37] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 02:01:37] "GET /static/css/main.css HTTP/1.1" 304 -
+DEBUG:__main__:Database contains 7 posts
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 02:01:39] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 02:01:39] "GET /static/css/main.css HTTP/1.1" 304 -
+DEBUG:__main__:metrics request successful response={"db_connection_count": 15, "post_count": 7}
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 02:01:49] "GET /metrics HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:01:57] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 02:01:57] "GET /healthz HTTP/1.1" 200 -
+ERROR:__main__:404, Post 45 not found.
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 02:02:23] "GET /45 HTTP/1.1" 404 -
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 02:02:23] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:02:27] "GET /healthz HTTP/1.1" 200 -
+DEBUG:__main__:Database contains 7 posts
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 02:02:37] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [22/Feb/2023 02:02:37] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:02:57] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:03:27] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:03:57] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:04:27] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:04:57] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:05:27] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:05:57] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:06:27] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:06:58] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:07:28] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:07:58] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:08:28] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:08:58] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:09:28] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:09:58] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:10:28] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:10:58] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:11:28] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:11:59] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:12:29] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:12:59] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:13:29] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:13:59] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:14:29] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:14:59] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:15:29] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:15:59] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:16:29] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:16:59] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:17:29] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:18:00] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:18:30] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:19:00] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:19:30] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:20:00] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:20:30] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:21:00] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:21:30] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:22:00] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:22:30] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:23:00] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:23:30] "GET /healthz HTTP/1.1" 200 -
+INFO:__main__:healthz request successful response={"result": "OK - healthy"}
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2023 02:24:01] "GET /healthz HTTP/1.1" 200 -
+
+# Command to create image and tag it.
+docker image tag techtrends:latest rbriley/techtrends:techtrends
+# Command to push taged image to gitHub
+docker push rbriley/techtrends:techtrends
