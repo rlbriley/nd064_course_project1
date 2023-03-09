@@ -4,7 +4,7 @@ namespace: sandbox
 appname: techtrends
 
 imageRepository: techtrends
-imageTag: "v1.0.1"
+imageTag: latest
 imagePullPolicy: IfNotPresent
 
 replicaCount: 1
